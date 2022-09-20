@@ -16,20 +16,30 @@ console.log(rastgele);
 let scorPc = 10;
 let toplamScorPc = 0;
 
+
 // her check butonuna tiklandiginda
 
 cek.onclick = function() {
     const tahmin= girdi.value;
 
+    if(tahmin>20 || tahmin<0 ){
+
+        alert("1-20 arasinda bir sayi giriniz")
+
+    }else{
+
     if( tahmin == rastgele){
         document.querySelector("body").style.backgroundColor = "green";
-        number = rastgele;
         mesaj.textContent = "Kazandiniz";
-     
+        sayi.textContent = rastgele;
+        
+    
+
         if(scorPc>toplamScorPc){
             toplamScorPc = scorPc ;
             sonuc.textContent = scorPc
         }
+       
     } else {
         if(scorPc > 1){
             scorPc--;
@@ -42,31 +52,25 @@ cek.onclick = function() {
             sonuc.textContent = 0;
             scorPc = 0
 
-
         }
+
     }
 }
-
+}
 //again tusu icin
 
 tekrar.onclick = () => {
+    console.log("merhaba");
     rastgele = Math.floor(Math.random() * 20 +1);
-    scorPc = 10;
-    toplamScorPc = scorPc;
-    sayi = "?"
-    mesaj = "Starting..."
+    console.log(rastgele);
+    scorPc = 10
+    hak.textContent = 10;
+    toplamScorPc = 0
+    sonuc.textContent = 0;
+    sayi.textContent = "?"
+    mesaj.textContent = "Starting..."
     girdi.value = "";
     document.querySelector("body").style.backgroundColor = "orange";
 
-
-
 }
 
-//enter ekleme
-
-girdi.onkeydown = function (tus){
-    tus.keyCode == 13;
-
-    cek.onclick()
-    girdi.value = ""
-}
