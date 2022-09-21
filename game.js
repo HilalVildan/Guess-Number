@@ -1,76 +1,74 @@
-// kullanacagim her seyi cagiriyorum.
 
-const tekrar = document.querySelector(".again");
-const sayi = document.querySelector (".number");
-const girdi = document.querySelector(".guess");
-const cek = document.querySelector(".check");
-const mesaj = document.querySelector(".msg");
-const hak = document.querySelector(".score");
-const sonuc = document.querySelector(".top-score");
+//rastgele sayiyi tekrar againe basinca tekrar kullanacagimiz icin let yazmak zorundayiz.
+//hangi sayiya kadar istiyorsaniz o sayiyla carpip yuvarlaak en dogru yoldur.
+let rastgeleSayi = Math.ceil(Math.random() * 20);
+console.log(rastgeleSayi);
 
+let mesaj = document.querySelector(".msg");
 
-//bilgisayar bir sayi tahmin edecek
-
-let rastgele = Math.floor(Math.random() * 20 +1);
-console.log(rastgele);
-let scorPc = 10;
-let toplamScorPc = 0;
+let skor = 10;
+let enYuksekScor = document.querySelector(".top-score");
 
 
-// her check butonuna tiklandiginda
+//! her check butonuna basildiginda...
 
-cek.onclick = function() {
-    const tahmin= girdi.value;
+document.querySelector(".check").addEventListener("click", ()=>{
 
-    if(tahmin>20 || tahmin<0 ){
+   const tahmin =  document.querySelector(".guess").value;
+   
+        //* tahmin girilmaden check butonuna basilmasin...
+    if(!tahmin){
+        mesaj.textContent ="Lütfen bir sayi giriniz.";
+    
+        //* tahmin dogru girildiyse...
+    }else if(tahmin==rastgeleSayi) {
 
-        alert("1-20 arasinda bir sayi giriniz")
+        mesaj.textContent = "Tebrikler Bildiniz..🎉";
+        document.querySelector ("body").style.backgroundColor = "green";
+        document.querySelector (".number").textContent = rastgeleSayi;
 
+        //!skor güncellenecek ekrana bastirilacak
+
+        if(scor>enYuksekScor){
+        enYuksekScor = skor;
+        document.querySelector(".top-score").textContent =enYuksekScor;
+        }
+
+        //*tahmin yanlis girildiyse
     }else{
 
-    if( tahmin == rastgele){
-        document.querySelector("body").style.backgroundColor = "green";
-        mesaj.textContent = "Kazandiniz";
-        sayi.textContent = rastgele;
-        
-    
+        if(skor>1){
+            skor--;
 
-        if(scorPc>toplamScorPc){
-            toplamScorPc = scorPc ;
-            sonuc.textContent = scorPc
-        }
-       
-    } else {
-        if(scorPc > 1){
-            scorPc--;
+            document.querySelector(".score").textContent = skor;
+            tahmin < rastgeleSayi ? (mesaj.textContent = "Arttirin📈") : (mesaj.textContent = "Azaltin📉");
 
-            tahmin < rastgele ? (mesaj.textContent= "Artirin") : (mesaj.textContent="Azaltin");
-            hak.textContent = scorPc;
         }else {
-            mesaj.textContent = "Kaybettiniz";
-            document.querySelector("body").style.backgroundColor ="red"
-            sonuc.textContent = 0;
-            scorPc = 0
+            //oyunu kaybettin
+            mesaj.textContent = "Oyunu Kaybettiniz";
+            document.querySelector (".score").textContent = 0
+            document.querySelector("body").style.backgroundColor = "red";
+            document.querySelector(".number").textContent = rastgeleSayi;
 
         }
 
     }
-}
-}
-//again tusu icin
+})
 
-tekrar.onclick = () => {
-    console.log("merhaba");
-    rastgele = Math.floor(Math.random() * 20 +1);
-    console.log(rastgele);
-    scorPc = 10
-    hak.textContent = 10;
-    toplamScorPc = 0
-    sonuc.textContent = 0;
-    sayi.textContent = "?"
-    mesaj.textContent = "Starting..."
-    girdi.value = "";
-    document.querySelector("body").style.backgroundColor = "orange";
+
+//!again butonuna basildiginda ayarlar baslangic degerine kurulsun arka ekran gri olsun
+
+document.querySelector(".again").onclick=()=>{
+
+    rastgeleSayi = Math.ceil(Math.random() * 20);
+    console.log(rastgeleSayi);
+    skor=10;
+    document.querySelector(".score").textContent = 10;
+    mesaj.textContent = "Oyun yeni oyuncu icin basliyor...";
+    document.querySelector("body").style.backgroundColor = "#2d3436";
+    document.querySelector(".guess").value = "";
+    document.querySelector(".number").textContent ="?"
+
+
 
 }
-
