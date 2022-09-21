@@ -7,7 +7,7 @@ console.log(rastgeleSayi);
 let mesaj = document.querySelector(".msg");
 
 let skor = 10;
-let enYuksekScor = document.querySelector(".top-score");
+let enYuksekScor = 0; 
 
 
 //! her check butonuna basildiginda...
