@@ -17,11 +17,11 @@ document.querySelector(".check").addEventListener("click", () => {
   console.log(!tahmin);
   //?tahmin girilmeden check butonuna basılmasın
   if (!tahmin) {
-    mesaj.textContent = "lütfen bir tahmin giriniz!";
+    mesaj.textContent = "Select a number!";
 
     //?Tahmin doğru ise
   } else if (tahmin == rastgeleSayı) {
-    mesaj.textContent = "Tebrikler Bildiniz..🎉";
+    mesaj.textContent = "Congrats You Win.🎉";
     document.querySelector("body").style.backgroundColor = "green";
     document.querySelector(".number").textContent = rastgeleSayı;
 
@@ -38,10 +38,10 @@ document.querySelector(".check").addEventListener("click", () => {
       document.querySelector(".score").textContent = skor;
 
       tahmin < rastgeleSayı
-        ? (mesaj.textContent = "Arttır 📈")
-        : (mesaj.textContent = "Azalt 📉");
+        ? (mesaj.textContent = "Increase 📈")
+        : (mesaj.textContent = "Decrease 📉");
     } else {
-      mesaj.textContent = "Oyunu Kaybettiniz ";
+      mesaj.textContent = "You lost 😕 ";
       document.querySelector(".score").textContent = 0;
       document.querySelector("body").style.backgroundColor = "red";
     }
@@ -51,7 +51,7 @@ document.querySelector(".check").addEventListener("click", () => {
 document.querySelector(".again").onclick = () => {
   rastgeleSayı = Math.ceil(Math.random() * 20);
   console.log(rastgeleSayı);
-  mesaj.textContent = "Oyun Yeni Oyuncu İçin Baslıyor";
+  mesaj.textContent = "game starts for new player";
 
   skor = 10;
   document.querySelector(".score").textContent = 10;
