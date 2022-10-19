@@ -16,14 +16,14 @@ document.querySelector(".check").addEventListener("click", ()=>{
 
    const tahmin =  document.querySelector(".guess").value;
    
-        //* tahmin girilmaden check butonuna basilmasin...
+        //* tahmin girilmeden check butonuna basilmasin...
     if(!tahmin){
-        mesaj.textContent ="Lütfen bir sayi giriniz.";
+        mesaj.textContent ="Select a number";
     
         //* tahmin dogru girildiyse...
     }else if(tahmin==rastgeleSayi) {
 
-        mesaj.textContent = "Tebrikler Bildiniz..🎉";
+        mesaj.textContent = "Congrats You Win.🎉";
         document.querySelector ("body").style.backgroundColor = "green";
         document.querySelector (".number").textContent = rastgeleSayi;
 
@@ -41,11 +41,11 @@ document.querySelector(".check").addEventListener("click", ()=>{
             skor--;
 
             document.querySelector(".score").textContent = skor;
-            tahmin < rastgeleSayi ? (mesaj.textContent = "Arttirin📈") : (mesaj.textContent = "Azaltin📉");
+            tahmin < rastgeleSayi ? (mesaj.textContent = "Increase📈") : (mesaj.textContent = "Decrease📉");
 
         }else {
             //oyunu kaybettin
-            mesaj.textContent = "Oyunu Kaybettiniz";
+            mesaj.textContent = "You lost 😕 ";
             document.querySelector (".score").textContent = 0
             document.querySelector("body").style.backgroundColor = "red";
             document.querySelector(".number").textContent = rastgeleSayi;
