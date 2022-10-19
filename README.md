@@ -8,7 +8,7 @@ Created a simple game "Guess the number" with JS. The game ends when the player 
 ​
 ## Project GIF
 ​
-![proje image](/Ekran%20Resmi%202022-09-27%2015.11.28.png)
+![proje image](/img/guessNumber.png)
 
 ## Technologies used
 ​
