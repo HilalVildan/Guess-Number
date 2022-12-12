@@ -8,19 +8,19 @@ let skor = 10;
 
 let topScore = localStorage.getItem("topScore") || 0;
 //?----browser da DOM da top-score değerini localStoroge den okuyarak güncelle
-document.querySelector(".top-score").textContent=topScore;
+document.querySelector(".top-score").textContent = topScore;
 
 //!her check butonuna basıldığında olacaklar;
 
 document.querySelector(".check").addEventListener("click", () => {
-  const tahmin = document.querySelector(".guess").value;
-  console.log(!tahmin);
+  const guess = document.querySelector(".guess").value;
+  console.log(!guess);
   //?tahmin girilmeden check butonuna basılmasın
-  if (!tahmin) {
+  if (!guess) {
     mesaj.textContent = "Select a number!";
 
-    //?Tahmin doğru ise
-  } else if (tahmin == rastgeleSayı) {
+    //?tahmin doğru ise
+  } else if (guess == rastgeleSayı) {
     mesaj.textContent = "Congrats You Win.🎉";
     document.querySelector("body").style.backgroundColor = "green";
     document.querySelector(".number").textContent = rastgeleSayı;
@@ -28,7 +28,7 @@ document.querySelector(".check").addEventListener("click", () => {
     if (skor > topScore) {
       //?eğer yeni skor localStoroge den yüksekse, kayıtlı topScore u ben skor umla güncelle
       localStorage.setItem("topScore", skor);
-      topScore=skor
+      topScore = skor;
       document.querySelector(".top-score").textContent = topScore;
     }
     //?tahmin yanlış girildiyse
@@ -37,7 +37,7 @@ document.querySelector(".check").addEventListener("click", () => {
       skor--;
       document.querySelector(".score").textContent = skor;
 
-      tahmin < rastgeleSayı
+      guess < rastgeleSayı
         ? (mesaj.textContent = "Increase 📈")
         : (mesaj.textContent = "Decrease 📉");
     } else {
@@ -61,6 +61,4 @@ document.querySelector(".again").onclick = () => {
   document.querySelector(".guess").value = "";
 
   document.querySelector(".number").textContent = "?";
-
-  
 };
